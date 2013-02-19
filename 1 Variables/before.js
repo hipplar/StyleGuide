@@ -1,4 +1,5 @@
-var Step 		= require('step');
+
+ var Step 		= require('step');
 var mongoose 	= require('mongoose');
 var ObjectId 	= mongoose.Types.ObjectId;
 var Event 		= mongoose.model('Event');

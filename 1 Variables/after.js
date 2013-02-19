@@ -10,19 +10,20 @@
  1.5) multiple property assignments should break across lines 
 
 */
-var Event 				= mongoose.model('Event'),
-	FB 					= require('../libs/fb-node')(require('fb')),
-	Like 				= mongoose.model('Like'),
+var FB 					= require('../libs/fb-node')(require('fb')),
 	moment    			= require('moment'),
 	mongoose 			= require('mongoose'),
-	ObjectId 			= mongoose.Types.ObjectId,
-	Photo 				= mongoose.model('Photo'),
 	qs          		= require('querystring'),
-	RayRay				= mongoose.model('RayRay'),
 	request     		= require('request'),
 	restler 			= require('restler'),	
-	Score 				= mongoose.model('Score'),
 	Step 				= require('step'),
+
+	Event 				= mongoose.model('Event'),
+	Like 				= mongoose.model('Like'),	
+	ObjectId 			= mongoose.Types.ObjectId,
+	Photo 				= mongoose.model('Photo'),
+	RayRay				= mongoose.model('RayRay'),
+	Score 				= mongoose.model('Score'),
 	TwitterAuthToken 	= mongoose.model('TwitterAuthToken'),
 	User 				= mongoose.model('User');
 

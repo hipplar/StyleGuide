@@ -44,27 +44,34 @@ FooSchema.statics.create = function (options, callback) {
        that            = this;
 
     Step(
-        function () {
+        function saveToCloud () {
             cloudFile.save(file.path, fileFullName, 'foo/' + options.eventId, file.type, this);
         },
-        function (err, response) {
-            if(err) throw err;
+        function updateModel (err, response) {
+            if (err) throw err;
 
             photo = new Photo({
-                _id:      id,
                 eventId:  options.eventId,
+                _id:      id,
                 url:      response.url
             });
 
             photo.save(callback);
+        },
+        function done (err) {
+            callback(err);
         }
     );
 };
+
+/*
+Indexes included with modules only when necessary (ex: sparse)
 
 FooPhotoSchema.index({ eventId: 1, createdOn: 1 });
 FooPhotoSchema.index({ eventId: 1, 'rfids.rfid': 1 });
 FooPhotoSchema.index({ url: 1 });
 FooPhotoSchema.index({ eventId: 1, url: 1 });
+*/
 
 exports.FooPhotoSchema = FooPhotoSchema;
 exports.Foo = mongoose.model('Foo', FooPhotoSchema);
